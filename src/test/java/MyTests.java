@@ -15,8 +15,8 @@ public class MyTests {
         Assert.assertTrue(new Random().nextBoolean(), "secondTest - 50 %");
     }
 
-    @Test
+/*    @Test
     public void thirdTest() {
         throw new RuntimeException(this.toString());
-    }
+    }*/
 }
