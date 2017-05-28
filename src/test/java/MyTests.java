@@ -5,6 +5,8 @@ import java.util.Random;
 
 public class MyTests {
 
+    private String env = System.getProperty("env");
+
     @Test
     public void firstTest() {
         Assert.assertEquals(true, true);
@@ -12,11 +14,16 @@ public class MyTests {
 
     @Test
     public void secondTest() {
-        Assert.assertTrue(new Random().nextBoolean(), "secondTest - 50 %");
+        if ("QA".equals(env)) {
+            Assert.assertTrue(new Random().nextBoolean(), "secondTest - random result for QA env.");
+        }
+
+        Assert.assertEquals(true, true);
     }
 
-/*    @Test
+    @Test
     public void thirdTest() {
-        throw new RuntimeException(this.toString());
-    }*/
+        Assert.assertTrue("STB".equals(env) || "QA".equals(env),
+                String.format("thirdTest - ENV should be defined, 'QA' or 'STB'.\nActual ENV is '%s'.\n", env));
+    }
 }
